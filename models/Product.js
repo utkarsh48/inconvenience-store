@@ -25,7 +25,7 @@ module.exports = (sequelize, Sequelize) => {
 			id: Joi.string().guid({version: 'uuidv4'}),
 			title: Joi.string().min(1).max(255).required(),
 			description: Joi.string().min(1).max(255).required(),
-			image: Joi.string().min(5).max(255),
+			image: Joi.string().min(5),
 			cost: Joi.number().min(0).required()
 		});
 
