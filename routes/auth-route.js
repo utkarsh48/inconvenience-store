@@ -15,6 +15,7 @@ router.post("/", async (req, res) => {
 	if(isAlreadyLoggedIn(token))
 		return res.status(406).send("Already logged in");
 
+
 	const { error } = User.validateAuth(req.body);
 	if (error) return res.sendStatus(400);
 
@@ -24,7 +25,9 @@ router.post("/", async (req, res) => {
 
 	const match = await compare(req.body.password, userFromDb.password);
 
+
 	if (!match) return res.status(400).send("Wrong Password");
+
 
 	token = User.generateAuthToken(userFromDb);
 
